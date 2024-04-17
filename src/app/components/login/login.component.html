@@ -1,0 +1,13 @@
+<h1>Login</h1>
+
+<label for="user">Usuario: </label>
+<input type="string" name="user" [(ngModel)]="usuario">
+
+<label for="clave">Clave: </label>
+<input type="string" name="clave" [(ngModel)]="clave">
+
+<br>
+<br>
+<button (click)="registrarUsuario()">Registrar Usuario</button>
+<br>
+<button (click)="iniciarSesion()">Iniciar sesion</button>
