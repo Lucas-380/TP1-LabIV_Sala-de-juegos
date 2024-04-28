@@ -5,3 +5,7 @@
 @import "primeicons/primeicons.css";
 /* Primeflex */
 @import "primeflex/primeflex.css";
+body{
+    margin: 0;
+    padding: 0;
+}
