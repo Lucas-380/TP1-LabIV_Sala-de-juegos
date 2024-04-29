@@ -18,7 +18,7 @@ import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
   standalone: true,
   imports: [FormsModule, RouterModule, InputTextModule, PasswordModule, CheckboxModule, ButtonModule, DialogModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  styleUrl: './login.component.css'
 })
 export class LoginComponent {
   public visible: boolean = false;
@@ -55,7 +55,10 @@ export class LoginComponent {
       })
     }
 
-
+  AccesoRapido(){
+    this.userMail = 'cuentaInvitado@gmail.com';
+    this.userPWD = 'cuentainvitado123'
+  }
 
 
 }

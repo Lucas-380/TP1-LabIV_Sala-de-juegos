@@ -25,6 +25,9 @@
 
     </div>
 
-	<h2><strong>Informacion de usuario</strong></h2>
-
+    @if (auth.currentUser?.email){
+        <h2><strong>Informacion de usuario</strong></h2>
+        <h4>{{ auth.currentUser?.email }}</h4>
+        <p>{{logsUser}}</p>
+    }
 </div>

@@ -6,7 +6,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
-import { enviroment } from '../enviromentConfig.ts';
+import { enviroment } from '../enviromentConfig';
 
 
 export const appConfig: ApplicationConfig = {
