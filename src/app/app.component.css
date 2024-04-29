@@ -50,3 +50,13 @@
   .logo{
     width: 100px;
   }
+
+@media (max-width: 768px) {
+  .site-navigation {
+      display: none;
+  }
+  .site-header {
+    margin-top: 10px;
+    padding: 10px;
+  }
+}
