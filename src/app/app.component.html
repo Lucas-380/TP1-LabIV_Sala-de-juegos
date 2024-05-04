@@ -14,8 +14,7 @@
       <ul class="nav">
         <li class="centrar"><a routerLink="home"><span class="pi pi-home mr-2"></span>Home</a></li> 
         <li class="centrar"><a routerLink="quienSoy"><span class="pi pi-user mr-2"></span>Quien Soy</a></li>
-
-            @if(auth.currentUser?.email){
+            @if(auth.sesion){
                 <li class="cuenta">
                     <p-button icon="pi pi-sign-out" label="cerrar sesion" (click)="CloseSession()" severity="danger"></p-button>
                 </li>
@@ -26,15 +25,18 @@
       </ul>
     </nav>
 </header>
+@if (auth.sesion) {
+    <app-chat></app-chat>
+}
 
 
 <div class="card flex justify-content-right sidebar-modificado">
-  <p-sidebar #sidebarRef [(visible)]="sidebarVisible">
-      <ng-template pTemplate="headless">
-          <div class="flex flex-column h-full">
-              <div class="flex align-items-center justify-content-between px-4 pt-3 flex-shrink-0">
-                  <span class="inline-flex align-items-center gap-2">
-                      <img src="../assets/images/logoJoyPlay.svg" width="100" alt="logo">
+    <p-sidebar #sidebarRef [(visible)]="sidebarVisible">
+        <ng-template pTemplate="headless">
+            <div class="flex flex-column h-full">
+                <div class="flex align-items-center justify-content-between px-4 pt-3 flex-shrink-0">
+                    <span class="inline-flex align-items-center gap-2">
+                        <img src="../assets/images/logoJoyPlay.svg" width="100" alt="logo">
                       <span class="font-semibold text-2xl text-primary">Sala de Juegos</span>
                   </span>
                   <span>
@@ -63,11 +65,11 @@
               </div>
               
               <div class="mt-auto">
-                @if(auth.currentUser?.email){
+                @if(auth.sesion){
                   <p-button icon="pi pi-sign-out" label="cerrar sesion" (click)="CloseSession()" severity="danger" class="ml-3"></p-button>
   
                 }@else{
-                    <p-button routerLink="registro" label="Registrar" class="m-1"></p-button>
+                    <p-button (click)="sidebarVisible = false" routerLink="registro" label="Registrar" class="m-1"></p-button>
                     <app-login></app-login>
                 }
                   <hr class="mb-3 mx-3 border-top-1 border-none surface-border" />
@@ -79,7 +81,6 @@
       </ng-template>
   </p-sidebar>
 </div>
-
 
 <p-confirmDialog #cd>
     <ng-template pTemplate="headless" let-message>

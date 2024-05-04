@@ -1,20 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { Usuario } from '../../clases/usuario';
-import { InputTextModule } from 'primeng/inputtext';
-import { PasswordModule } from 'primeng/password';
-import { CheckboxModule } from 'primeng/checkbox';
-import { ButtonModule } from 'primeng/button';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
-import { ToastModule } from 'primeng/toast';
 import { ConfirmationService, MessageService, ConfirmEventType } from 'primeng/api';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @Component({
   selector: 'app-register',
-  standalone: true,
-  imports: [FormsModule, InputTextModule, PasswordModule, CheckboxModule, ButtonModule, ToastModule, ConfirmDialogModule],
+  standalone: false,
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
   providers: [ConfirmationService, MessageService]

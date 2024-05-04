@@ -1,0 +1,26 @@
+<p-sidebar [(visible)]="chatVisible" position="right">
+    <ng-template pTemplate="headless">
+        <span class="font-semibold text-2xl text-primary m-3">Chat Global</span>
+        <div class="container">
+            <div class="mensajes">
+                <ul class="mensaje-lista" *ngFor="let mensaje of this.mensajesOrdenados">
+                    <li [ngClass]="{'msjInvitado': mensaje.user != this.usuarioConectado}">
+                        <p>{{this.darFormatoFecha(mensaje.fecha)}} - {{mensaje.user }}:</p>
+                        <p>{{mensaje.mensaje}}</p>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="card flex justify-content-center">
+                <input type="text" pInputText [(ngModel)]="msjInput"/>
+                <p-button icon="pi pi-send" (click)="enviarMensaje()" severity="info"></p-button>
+            </div>
+        </div>
+    </ng-template>
+</p-sidebar>
+
+<p-button 
+type="button" 
+class="ml-2 chat"
+(click)="chatVisible = true" 
+icon="pi pi-comments"/>
