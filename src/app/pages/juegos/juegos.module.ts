@@ -18,9 +18,9 @@ import { ButtonModule } from 'primeng/button';
     TecladoComponent,
     DialogModule,
     ButtonModule
-  ],
-  providers:[
-    // MessageService
   ]
 })
-export class JuegosModule { }
+export class JuegosModule { 
+
+  
+}

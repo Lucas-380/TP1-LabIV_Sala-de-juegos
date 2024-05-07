@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ahorcado',
@@ -21,7 +21,7 @@ export class AhorcadoComponent implements OnInit{
   partidaGanada: boolean = false;
 
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.palabraSecretaArr = this.stringToArray(this.palabraSecreta);

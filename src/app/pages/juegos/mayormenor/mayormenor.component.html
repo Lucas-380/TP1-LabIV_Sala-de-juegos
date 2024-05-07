@@ -1,1 +1,39 @@
-<p>mayormenor works!</p>
+<div class="grid justify-content-center mt-5 mr-0">
+    <div class="col">
+        <div class="grid h-20rem justify-content-center">
+            <button pButton label="Menor" class="w-8rem" (click)="analizarOpcion('MENOR')"></button>
+            <div class="col-2 bg-green-300 mx-5 text-center">
+                {{this.cartaActual.valor}} {{this.cartaActual.palo}}
+            </div>
+            <button pButton label="Mayor" class="w-8rem" (click)="analizarOpcion('MAYOR')"></button>
+        </div>
+    </div>
+</div>
+<div class="grid justify-content-center mr-0">
+    <h1>Puntuacion: {{this.puntuacion}}</h1>
+</div>
+
+<div class="card flex justify-content-center">
+    <p-dialog 
+        [(visible)]="visible" 
+        [modal]="true" 
+        [style]="{ width: '30vw' }" 
+        [draggable]="false" 
+        [resizable]="false">
+        <ng-template pTemplate="headless">
+            <div class="flex flex-column align-items-center p-5 surface-overlay border-round">
+                <!-- @if (this.sinCartas) { -->
+                    <div class="border-circle bg-green-500 inline-flex justify-content-center align-items-center h-6rem w-6rem -mt-8">
+                        <i class="pi pi-thumbs-up text-5xl"></i>
+                    </div>
+                    <span class="font-bold text-2xl block mb-2 mt-4">Se terminaron las cartas</span>
+                    <p class="mb-0">Puede volver a jugar o pruebe otro juego.</p>              
+                
+                <div class="flex align-items-center gap-2 mt-4">
+                    <button pButton label="Reintentar" (click)="reintentar()" class="w-8rem"></button>
+                    <button pButton label="Menú" (click)="volverHome()" class="w-8rem"></button>
+                </div>
+            </div>
+        </ng-template>
+    </p-dialog>
+</div>
