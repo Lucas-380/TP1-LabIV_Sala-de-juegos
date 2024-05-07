@@ -6,6 +6,7 @@ import { MayormenorComponent } from './mayormenor/mayormenor.component';
 import { TecladoComponent } from '../../components/teclado/teclado.component';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ButtonModule } from 'primeng/button';
     JuegosRoutingModule,
     TecladoComponent,
     DialogModule,
-    ButtonModule
+    ButtonModule,
+    ProgressSpinnerModule
   ]
 })
 export class JuegosModule { 

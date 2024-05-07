@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CartasService } from '../../../services/cartas.service';
 
 interface Carta {
   valor: number;
   palo: string;
+  img: string;
 }
 
 @Component({
@@ -17,21 +19,27 @@ interface Carta {
 export class MayormenorComponent implements OnInit{
   public mazo: Carta[] = [];
   public indiceCartaActual: number = 0;
-  public cartaActual: Carta = { valor: 0, palo: '' }; 
-  public siguienteCarta: Carta= { valor: 0, palo: '' };
+  public cartaActual: Carta = { valor: 0, palo: '', img: ''}; 
+  public siguienteCarta: Carta = { valor: 0, palo: '', img: '' };
   public puntuacion:number = 0;
 
   visible: boolean = false;
   sinCartas: boolean = false;
 
-  constructor(private router: Router){
+  constructor(private router: Router, private cartasService: CartasService){
 
   }
 
   ngOnInit(): void {
-    this.generarMazo();
-    this.mezclarMazo();
-    this.cartaActual = this.sacarCarta();
+    //this.generarMazo();
+    this.cartasService.getCarta()
+    .subscribe(car => {
+      this.mazo = car;
+      if(this.cartaActual.valor == 0){
+        this.mezclarMazo();
+        this.cartaActual = this.sacarCarta();
+      }
+    });
   }
 
   public analizarOpcion(opcion:string){
@@ -45,17 +53,18 @@ export class MayormenorComponent implements OnInit{
         this.puntuacion -= 1;
       }
     }
-//    console.log("Puntuacion " + this.puntuacion);
     this.cartaActual = this.siguienteCarta;
   }
 
-  private generarMazo(): void {
-    for (let valor = 1; valor <= 12; valor++) {
-      for (let palo of ['Oro', 'Basto', 'Espada', 'Copa']) {
-        this.mazo.push({ valor, palo });
-      }
-    }
-  }
+  // private generarMazo(): void {
+  //   for (let valor = 1; valor <= 12; valor++) {
+  //     for (let palo of ['oros', 'bastos', 'espadas', 'copas']) {
+  //       //this.mazo.push({ valor, palo });
+  //       this.cartasService.addCarta(valor, palo);
+  //     }
+  //   }
+  //   console.log(this.mazo);
+  // }
 
   private mezclarMazo(): void {
     for (let i = this.mazo.length - 1; i > 0; i--) {
@@ -64,14 +73,14 @@ export class MayormenorComponent implements OnInit{
     }
   }
 
-  private sacarCarta(){
+  public sacarCarta(){
     if (this.indiceCartaActual < this.mazo.length) {
       const carta = this.mazo[this.indiceCartaActual];
       this.indiceCartaActual++;
       return carta;
     } else {
       this.visible = true;
-      return { valor: 0, palo: '' };
+      return { valor: 0, palo: '', img: ''};
     }
   }
 
@@ -83,4 +92,5 @@ export class MayormenorComponent implements OnInit{
   public volverHome(){
     this.router.navigate(['/home']);
   }
+
 }

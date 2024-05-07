@@ -1,17 +1,24 @@
+@if (this.cartaActual.valor == 0) {
+    <div class="card flex justify-content-center">
+        <p-progressSpinner ariaLabel="loading"></p-progressSpinner>
+    </div>
+}@else{
 <div class="grid justify-content-center mt-5 mr-0">
     <div class="col">
         <div class="grid h-20rem justify-content-center">
             <button pButton label="Menor" class="w-8rem" (click)="analizarOpcion('MENOR')"></button>
-            <div class="col-2 bg-green-300 mx-5 text-center">
-                {{this.cartaActual.valor}} {{this.cartaActual.palo}}
+            <div class="col-2 mx-5 text-center">
+                <!-- {{this.cartaActual.valor}} {{this.cartaActual.palo}} -->
+                    <img src={{this.cartaActual.img}} alt="{{this.cartaActual.valor}} {{this.cartaActual.palo}}">
+                </div>
+                <button pButton label="Mayor" class="w-8rem" (click)="analizarOpcion('MAYOR')"></button>
             </div>
-            <button pButton label="Mayor" class="w-8rem" (click)="analizarOpcion('MAYOR')"></button>
         </div>
     </div>
-</div>
-<div class="grid justify-content-center mr-0">
-    <h1>Puntuacion: {{this.puntuacion}}</h1>
-</div>
+    <div class="grid justify-content-center mr-0">
+        <h1>Puntuacion: {{this.puntuacion}}</h1>
+    </div>
+}   
 
 <div class="card flex justify-content-center">
     <p-dialog 

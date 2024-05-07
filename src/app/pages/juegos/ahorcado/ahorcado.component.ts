@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { PaisesService } from '../../../services/paises.service';
 @Component({
   selector: 'app-ahorcado',
   standalone: false,
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 
 export class AhorcadoComponent implements OnInit{
-  public palabraSecreta: string = 'ARGENTINA';
+  public palabraSecreta: string = '';
   public intentos: number = 1;
 
   public palabraSecretaArr: string[] = [];
@@ -17,17 +17,33 @@ export class AhorcadoComponent implements OnInit{
   public palabraEnPantalla: string[] = [];
   public letraIngresada: string = '';
 
+  paises: any[] = [];
+  selectedPais: any;
+  selectedContinent: string = "";
+
   visible: boolean = false;
   partidaGanada: boolean = false;
+  jugando: boolean = false;
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private paisesService: PaisesService) { }
 
   ngOnInit(): void {
+    this.paisesService.getPaises()
+    .subscribe(paises => {
+      this.paises = paises;
+    });
+
+  }
+
+  public comenzar(){
+    this.palabraSecreta = (this.paises[this.numeroAleatorio()].name.common).toUpperCase();
     this.palabraSecretaArr = this.stringToArray(this.palabraSecreta);
     this.palabraSecretaArr.forEach(l => {
       this.palabraEnPantalla.push('_');
     });
+    console.log(this.palabraSecretaArr);
+    this.jugando = true;
   }
 
   leerLetra(letra: string){
@@ -50,6 +66,7 @@ export class AhorcadoComponent implements OnInit{
         }
       }
     }
+    //console.log(this.paises[0].name.common);
   }
   
   private stringToArray(str: string): string[] {
@@ -82,5 +99,10 @@ export class AhorcadoComponent implements OnInit{
     this.router.navigate(['/home']);
   }
 
+  private numeroAleatorio(): number {
+    const numero = Math.random();
+    const numeroAjustado = Math.floor(numero * 40) + 1;
+    return numeroAjustado;
+  }
 
 }

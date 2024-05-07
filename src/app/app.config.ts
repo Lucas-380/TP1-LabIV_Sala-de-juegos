@@ -7,11 +7,12 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { enviroment } from '../enviromentConfig';
-
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideAnimations(), importProvidersFrom(provideFirebaseApp(() => initializeApp(enviroment))),
     importProvidersFrom(provideAuth(() => getAuth())), 
     importProvidersFrom(provideFirestore(() => getFirestore())), 
-    importProvidersFrom(provideDatabase(() => getDatabase()))]
+    importProvidersFrom(provideDatabase(() => getDatabase())),
+    provideHttpClient()]
 };

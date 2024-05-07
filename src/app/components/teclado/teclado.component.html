@@ -2,4 +2,5 @@
     @for(tecla of this.letrasTeclado; track $index) {
         <button pButton class="m-1" (click)="enviarLetra(tecla)">{{tecla}}</button>
     }
+    <button pButton class="m-1" (click)="enviarLetra(' ')">espacio</button>
 </div>

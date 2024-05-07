@@ -1,4 +1,4 @@
-<div class="grid justify-content-center">
+<div class="grid justify-content-center mx-0">
     <div class="col-8">
         <div class="grid text-center p-1 border-round-sm fondo">
             <div class="col-8 h-17rem">
@@ -7,11 +7,15 @@
                         {{l}}
                     }
                 </p>
-                <p class="text-2x1 text-left">letras usadas:
-                    @for (letraUsada of this.letrasUsadas; track $index) {
-                        {{letraUsada}}
-                    }
-                </p>
+                @if(!this.jugando){
+                    <button pButton label="Comenzar" class="bg-green-500" (click)="comenzar()"></button>
+                }@else {
+                    <p class="text-2x1 text-left">letras usadas:
+                        @for (letraUsada of this.letrasUsadas; track $index) {
+                            {{letraUsada}}
+                        }
+                    </p>
+                }
             </div>
             <div class="col-4 container-img">
                 @switch (this.intentos) {
@@ -63,7 +67,7 @@
                         <i class="pi pi-thumbs-up text-5xl"></i>
                     </div>
                     <span class="font-bold text-2xl block mb-2 mt-4">Bien hecho</span>
-                    <p class="mb-0">Puede volver a jugar o pruebe otro juego.</p>              
+                    <p class="mb-0">La palabra era {{this.palabraSecreta}}.</p>              
                 }@else{
                     <div class="border-circle bg-red-500 inline-flex justify-content-center align-items-center h-6rem w-6rem -mt-8">
                         <i class="pi pi-thumbs-down text-5xl"></i>
