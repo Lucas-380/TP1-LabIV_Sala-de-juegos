@@ -1,0 +1,15 @@
+.fondo{
+    background-color: #0051ff8a;
+    box-shadow: 0 5px 10px rgba(0, 132, 255, 0.8);
+}
+
+.container-img{
+    background-color: #ffffff;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.8);
+}
+
+.fondo-teclado{
+    background-color: #000309a8;
+    border-radius: 0.9%;
+    padding: 10px;
+}

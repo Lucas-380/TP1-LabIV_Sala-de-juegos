@@ -3,8 +3,6 @@ import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuItem, ConfirmationService } from 'primeng/api';
-// import { Auth } from '@angular/fire/auth';
-// import { LoginComponent } from './pages/auth/login/login.component';
 import { Sidebar, SidebarModule} from 'primeng/sidebar';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { AuthModule } from './pages/auth/auth.module';

@@ -1,0 +1,81 @@
+<div class="grid justify-content-center">
+    <div class="col-8">
+        <div class="grid text-center p-1 border-round-sm fondo">
+            <div class="col-8 h-17rem">
+                <p class="text-5xl">
+                    @for (l of this.palabraEnPantalla; track $index) {
+                        {{l}}
+                    }
+                </p>
+                <p class="text-2x1 text-left">letras usadas:
+                    @for (letraUsada of this.letrasUsadas; track $index) {
+                        {{letraUsada}}
+                    }
+                </p>
+            </div>
+            <div class="col-4 container-img">
+                @switch (this.intentos) {
+                    @case (1) {
+                        <img src="../../../../assets/images/ahorcado/1.png" class="w-11" alt="">
+                    }
+                    @case (2) {
+                        <img src="../../../../assets/images/ahorcado/2.png" class="w-11" alt="">
+                    }
+                    @case (3) {
+                        <img src="../../../../assets/images/ahorcado/3.png" class="w-11" alt="">
+                    }
+                    @case (4) {
+                        <img src="../../../../assets/images/ahorcado/4.png" class="w-11" alt="">
+                    }
+                    @case (5) {
+                        <img src="../../../../assets/images/ahorcado/5.png" class="w-11" alt="">
+                    }
+                    @case (6) {
+                        <img src="../../../../assets/images/ahorcado/6.png" class="w-11" alt="">
+                    }
+                    @case (7) {
+                        <img src="../../../../assets/images/ahorcado/7.png" class="w-11" alt="">
+                    }
+                    @case (8) {
+                        <img src="../../../../assets/images/ahorcado/8.png" class="w-11" alt="">
+                    }
+                }
+
+            </div>
+            <div class="fondo-teclado">
+                <app-teclado (letraSeleccionada)="leerLetra($event)"></app-teclado>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card flex justify-content-center">
+    <p-dialog 
+        [(visible)]="visible" 
+        [modal]="true" 
+        [style]="{ width: '30vw' }" 
+        [draggable]="false" 
+        [resizable]="false">
+        <ng-template pTemplate="headless">
+            <div class="flex flex-column align-items-center p-5 surface-overlay border-round">
+                @if (this.partidaGanada) {
+                    <div class="border-circle bg-green-500 inline-flex justify-content-center align-items-center h-6rem w-6rem -mt-8">
+                        <i class="pi pi-thumbs-up text-5xl"></i>
+                    </div>
+                    <span class="font-bold text-2xl block mb-2 mt-4">Bien hecho</span>
+                    <p class="mb-0">Puede volver a jugar o pruebe otro juego.</p>              
+                }@else{
+                    <div class="border-circle bg-red-500 inline-flex justify-content-center align-items-center h-6rem w-6rem -mt-8">
+                        <i class="pi pi-thumbs-down text-5xl"></i>
+                    </div>
+                    <span class="font-bold text-2xl block mb-2 mt-4">Se acabaron los intentos...</span>
+                    <p class="mb-0">Intentelo otra vez, o pruebe otro juego.</p>
+                }
+                <div class="flex align-items-center gap-2 mt-4">
+                    <button pButton label="Reintentar" (click)="reintentar()" class="w-8rem"></button>
+                    <button pButton label="Menú" (click)="volverHome()" class="w-8rem"></button>
+                </div>
+            </div>
+        </ng-template>
+    </p-dialog>
+</div>

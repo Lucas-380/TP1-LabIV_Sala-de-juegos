@@ -4,10 +4,11 @@ import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { Auth } from '@angular/fire/auth';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CardModule, ButtonModule, TableModule],
+  imports: [CardModule, ButtonModule, TableModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit{
   constructor(public auth: Auth, private firestore: Firestore){
 
   }
+  
   ngOnInit(): void {
     this.GetData();
   }

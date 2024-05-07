@@ -46,7 +46,7 @@ export class RegisterComponent {
           this.router.navigate(['/home']);
         }
     });
-}
+  }
 
 
 }
