@@ -1,0 +1,26 @@
+<!-- <button pButton label="comen" class="w-8rem" (click)="comenzar()"></button> -->
+
+@if(this.preguntas){
+    <div class="card justify-content-center">
+        <p-splitter 
+            [style]="{ height: 'auto' }" 
+            styleClass="mb-5" 
+            layout="vertical">
+                <ng-template pTemplate>
+                    <div class="col flex align-items-center justify-content-center">
+                        <h4>{{this.preguntas[0].pregunta}}</h4>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate>
+                    <div class="col flex align-items-center justify-content-center">
+                        <div class="col flex flex-wrap justify-content-center" style="max-width: 500px">
+                            <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">{{this.preguntas[0].opcion_uno}}</button>
+                            <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">{{this.preguntas[0].opcion_dos}}</button>
+                            <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">{{this.preguntas[0].opcion_correcta}}</button>
+                            <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">{{this.preguntas[0].opcion_tres}}</button>
+                        </div>
+                    </div>
+                </ng-template>
+        </p-splitter>
+    </div>
+}

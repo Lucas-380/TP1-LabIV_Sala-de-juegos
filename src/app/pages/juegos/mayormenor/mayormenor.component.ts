@@ -50,7 +50,9 @@ export class MayormenorComponent implements OnInit{
       if(opcion == 'MENOR' && this.siguienteCarta?.valor <= this.cartaActual?.valor){
         this.puntuacion += 1;
       }else{
-        this.puntuacion -= 1;
+        if(this.puntuacion != 0){
+          this.puntuacion -= 1;
+        }
       }
     }
     this.cartaActual = this.siguienteCarta;

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { PreguntadosComponent } from '../preguntados/preguntados.component';
 import { AhorcadoComponent } from './ahorcado/ahorcado.component';
 import { MayormenorComponent } from './mayormenor/mayormenor.component';
 
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path:"mayormenor",
     component: MayormenorComponent
+  },
+  {
+    path:"preguntados",
+    component: PreguntadosComponent
   }
 ];
 
@@ -18,4 +23,6 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
+
+
 export class JuegosRoutingModule { }
