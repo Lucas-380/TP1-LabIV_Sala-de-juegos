@@ -1,26 +1,62 @@
 <!-- <button pButton label="comen" class="w-8rem" (click)="comenzar()"></button> -->
 
-@if(this.preguntas){
-    <div class="card justify-content-center">
-        <p-splitter 
-            [style]="{ height: 'auto' }" 
-            styleClass="mb-5" 
-            layout="vertical">
-                <ng-template pTemplate>
-                    <div class="col flex align-items-center justify-content-center">
-                        <h4>{{this.preguntas[0].pregunta}}</h4>
-                    </div>
-                </ng-template>
-                <ng-template pTemplate>
-                    <div class="col flex align-items-center justify-content-center">
-                        <div class="col flex flex-wrap justify-content-center" style="max-width: 500px">
-                            <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">{{this.preguntas[0].opcion_uno}}</button>
-                            <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">{{this.preguntas[0].opcion_dos}}</button>
-                            <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">{{this.preguntas[0].opcion_correcta}}</button>
-                            <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">{{this.preguntas[0].opcion_tres}}</button>
+<!-- <div class="card flex justify-content-center">
+
+        <p-menu [model]="items">
+            <ng-template let-item pTemplate="item">
+                <a
+                    [routerLink]="item.routerLink"
+                    class="custom-menu-item"
+                    [ngClass]="{'selected-menu-item': isSelected(item)}"
+                    (click)="onSelectItem($event, item)"
+                >
+                    <span class="pi {{item.icon}} menu-item-icon"></span>
+                    <span class="menu-item-label">{{item.label}}</span>
+                    </a>
+                    </ng-template>
+                <p-button icon="pi pi-iconName" label="label"></p-button>
+        </p-menu>
+
+    @if(this.preguntas)
+    {
+        <div class="card justify-content-center">
+            <p-splitter 
+                [style]="{ height: 'auto' }" 
+                styleClass="mb-5" 
+                layout="vertical">
+                    <ng-template pTemplate>
+                        <div class="col flex align-items-center justify-content-center">
+                        @if(this.dificultad && this.categoria){
+                            <h4>{{this.preguntas[0].pregunta}}</h4>
+                        }@else {
+                            <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">JUGAR</button>
+                        }
                         </div>
-                    </div>
-                </ng-template>
-        </p-splitter>
-    </div>
-}
+                    </ng-template>
+                    <ng-template pTemplate>
+                        <div class="col flex align-items-center justify-content-center">
+                            <div class="col flex flex-wrap justify-content-center" style="max-width: 500px">
+                                @if (this.dificultad && this.categoria) {
+                                    <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">{{this.preguntas[0].opcion_uno}}</button>
+                                    <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">{{this.preguntas[0].opcion_dos}}</button>
+                                    <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">{{this.preguntas[0].opcion_correcta}}</button>
+                                    <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">{{this.preguntas[0].opcion_tres}}</button>
+                                }@else{
+                                    
+                                }
+                            </div>
+                        </div>
+                    </ng-template>
+            </p-splitter>
+        </div>
+    }@else{ -->
+        <!-- SPINNER DE CARGA -->
+    <!-- }
+</div> -->
+<!-- <button pButton label="comen" class="w-8rem" (click)="comenzar()"></button> -->
+
+<div class="flex justify-content-center flex-wrap">
+    <p-button class="m-2" (click)="comenzar('Fácil')">Fácil</p-button>
+    <p-button class="m-2" (click)="comenzar('Medio')">Media</p-button>
+    <p-button class="m-2" (click)="comenzar('Difícil')">Difícil</p-button>
+</div>

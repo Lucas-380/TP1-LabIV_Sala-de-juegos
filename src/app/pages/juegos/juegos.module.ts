@@ -9,6 +9,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SplitterModule } from 'primeng/splitter';
+import { MenuModule } from 'primeng/menu';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SplitterModule } from 'primeng/splitter';
     DialogModule,
     ButtonModule,
     ProgressSpinnerModule,
-    SplitterModule
+    SplitterModule,
+    MenuModule
   ]
 })
 export class JuegosModule { 
