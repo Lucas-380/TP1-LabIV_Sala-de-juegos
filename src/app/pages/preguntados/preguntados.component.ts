@@ -4,6 +4,7 @@ import { PreguntaService } from '../../services/pregunta.service';
 import { Pregunta } from '../../clases/pregunta';
 import { MenuItem } from 'primeng/api';
 
+
 @Component({
   selector: 'app-preguntados',
   standalone: false,
@@ -17,6 +18,7 @@ export class PreguntadosComponent implements OnInit{
   public dificultad:string = '';
   public categoria:string = '';
   selectedItems: MenuItem[] = [];
+  public preg:any = '';
 
   constructor(private router:Router, private preguntadoService: PreguntaService){
 
@@ -34,19 +36,16 @@ export class PreguntadosComponent implements OnInit{
     //this.preguntadoService.addPregunta();
   }
 
-  public comenzar(dificultad: string){
+  public comenzar(){
     console.log(this.preguntas);
-    
+    this.preg(this.preguntas[1]);
   }
 
-  private filtrarPregunta(dificultad: string, categoria: string){
-    // let i = 0;
-    // this.preguntas.forEach(p => {
-    //   if(p.categoria == categoria && p.dificultad == dificultad){
-    //     this.preguntas.
-    //     }
-    //   i++;
-    // });
+
+
+  private mostrarPregunta(pregunta: Pregunta){
+    console.log(pregunta.pregunta);
   }
+
 
 }

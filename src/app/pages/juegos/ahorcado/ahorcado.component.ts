@@ -28,14 +28,13 @@ export class AhorcadoComponent implements OnInit{
 
   constructor(private router: Router, private paisesService: PaisesService) { }
 
-    ngOnInit(): void {
-        this.paisesService.getPaises()
-        .subscribe(paises => {
-          this.paises = paises;
-          console.log(paises);
-          
-      });
-    }
+  ngOnInit(): void {
+      this.paisesService.getPaises()
+      .subscribe(paises => {
+        this.paises = paises;
+        console.log(paises);
+    });
+  }
 
   public comenzar(){
     this.palabraSecreta = (this.paises[this.numeroAleatorio()].name.common).toUpperCase();

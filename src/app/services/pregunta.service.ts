@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData, addDoc } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PreguntaService {
 
-  constructor(private firestore: Firestore) {
-
-  }
+  constructor(private firestore: Firestore) { }
 
   // a(valor:number, palo:string){
   //   const ref = collection(this.firestore, 'cartas');
@@ -24,9 +22,16 @@ export class PreguntaService {
     return collectionData(pregRef) as Observable<any[]>;
   }
 
+  private objetoSource = new BehaviorSubject<any>({});
+  objeto$ = this.objetoSource.asObservable();
+
+  enviarObj(objeto: any) {
+    this.objetoSource.next(objeto);
+  }
+
 
   // addPregunta(){
-  //   const ref = collection(this.firestore, 'preguntas');
+  //   const ref = collection(this.firestore, 'preguntas'); 
   //   const preguntas = [
   //     {
   //       categoria: "Deportes",

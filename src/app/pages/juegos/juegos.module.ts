@@ -10,6 +10,8 @@ import { ButtonModule } from 'primeng/button';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SplitterModule } from 'primeng/splitter';
 import { MenuModule } from 'primeng/menu';
+import { PanelModule } from 'primeng/panel';
+import { panelPreguntado } from "../../components/panelPreguntado/panelPreguntado.component";
 
 @NgModule({
   declarations: [
@@ -25,8 +27,10 @@ import { MenuModule } from 'primeng/menu';
     ButtonModule,
     ProgressSpinnerModule,
     SplitterModule,
-    MenuModule
-  ]
+    MenuModule,
+    PanelModule,
+    panelPreguntado
+]
 })
 export class JuegosModule { 
 

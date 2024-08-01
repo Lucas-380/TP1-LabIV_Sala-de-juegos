@@ -2,12 +2,17 @@ import { Routes } from '@angular/router';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 
+
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { 
     path: 'home',
     loadComponent: () => import("./pages/home/home.component").then(m => m.HomeComponent)
   },
+  // { 
+  //   path: 'panelPreguntado',
+  //   component: panelPreguntado
+  // },
   { 
     path: 'registro', 
     component: RegisterComponent 

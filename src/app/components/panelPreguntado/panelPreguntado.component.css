@@ -1,0 +1,7 @@
+    /* Desactivar el cambio de tamaño del divisor */
+    ::ng-deep .p-splitter .p-splitter-gutter {
+        pointer-events: none;
+        background-color: #e5e7eb;
+        cursor: default;
+    }
+    
