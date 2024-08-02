@@ -15,18 +15,38 @@
 
             <ng-template pTemplate>
                 <div class="col flex align-items-center justify-content-center">
-                    <h4>Pregunta</h4>
-                    {{ this.preguntaRecibida.pregunta }}
+                    <!-- <button class="m-4" (click)="comenzar()">cargar</button> -->
+                    @if (iniciar) {
+                        <h4>{{this.pregunta.pregunta}}</h4>
+                    }@else {
+                        <h4>Pregunta</h4>
+                    }
                 </div>
             </ng-template>
 
             <ng-template pTemplate>
                 <div class="col flex align-items-center justify-content-center">
                     <div class="col flex flex-wrap justify-content-center" style="max-width: 500px">
-                        <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">OPCION</button>
-                        <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">OPCION</button>
-                        <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">OPCION</button>
-                        <button class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round" style="min-width: 200px; min-height: 75px">OPCION</button>
+                        @if (iniciar) {
+                            @for (opcion of opciones; track $index) {
+                                <button
+                                  class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
+                                  style="min-width: 200px; min-height: 75px" (click)="validarOpcion(opcion)" [disabled]="allButtonsDisabled"
+                                  (click)="onButtonClick()"
+                                >
+                                  {{ opcion }}
+                                </button>
+                              }
+                        }@else {
+                            @for (opcion of ["?", "?", "?", "?"]; track $index) {
+                                <button
+                                  class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
+                                  style="min-width: 200px; min-height: 75px"
+                                >
+                                  {{ opcion }}
+                                </button>
+                              }
+                        }
                     </div>
                 </div>
             </ng-template>

@@ -1,11 +1,4 @@
 <div class="card flex justify-content-center">
-    <!-- <p-panel header="Seleccione una dificultad">
-        <div class="flex justify-content-center flex-wrap">
-            <p-button class="m-4" (click)="comenzar('Fácil')">Fácil</p-button>
-            <p-button class="m-4" (click)="comenzar('Media')">Media</p-button>
-            <p-button class="m-4" (click)="comenzar('Difícil')">Difícil</p-button>
-        </div>
-    </p-panel> -->
     <p-button class="m-4" (click)="comenzar()">Empezar</p-button>
-    <app-panelPreguntado [preg]="preg"></app-panelPreguntado>
+    <app-panelPreguntado [pregunta]="this.preg" [iniciar]="iniciar" [opciones]="opciones" ></app-panelPreguntado>
 </div>

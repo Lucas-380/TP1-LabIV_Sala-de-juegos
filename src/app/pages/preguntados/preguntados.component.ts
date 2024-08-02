@@ -19,6 +19,10 @@ export class PreguntadosComponent implements OnInit{
   public categoria:string = '';
   selectedItems: MenuItem[] = [];
   public preg:any = '';
+  public iniciar:boolean = false;
+  public pregunta:any = [];
+  public numAleatorio:number = 0;
+  public siguientePregunta: number = 0;
 
   constructor(private router:Router, private preguntadoService: PreguntaService){
 
@@ -36,15 +40,45 @@ export class PreguntadosComponent implements OnInit{
     //this.preguntadoService.addPregunta();
   }
 
-  public comenzar(){
-    console.log(this.preguntas);
-    this.preg(this.preguntas[1]);
+  private obtenerNumeroAleatorio(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  public comenzar(){
+    this.numAleatorio = this.obtenerNumeroAleatorio(0, 15);
+    // console.log(this.preguntas[0]);
+    this.preg = this.preguntas[this.numAleatorio];
+    this.cargarOpciones();
+    this.mezclarOpciones();
+    this.iniciar = true;
+    this.siguientePregunta += 1;
+  }
+
+  cargarOpciones(){
+    this.pregunta = {
+      opcion_correcta: this.preguntas[this.numAleatorio].opcion_correcta,
+      opcion_uno: this.preguntas[this.numAleatorio].opcion_uno,
+      opcion_dos: this.preguntas[this.numAleatorio].opcion_dos,
+      opcion_tres: this.preguntas[this.numAleatorio].opcion_tres
+    };
+  }
+
+  opciones: string[] = [];
 
 
-  private mostrarPregunta(pregunta: Pregunta){
-    console.log(pregunta.pregunta);
+  mezclarOpciones() {
+    this.opciones = [
+      this.pregunta.opcion_correcta,
+      this.pregunta.opcion_uno,
+      this.pregunta.opcion_dos,
+      this.pregunta.opcion_tres
+    ];
+
+    // Mezclar las opciones
+    for (let i = this.opciones.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [this.opciones[i], this.opciones[j]] = [this.opciones[j], this.opciones[i]];
+    }
   }
 
 
