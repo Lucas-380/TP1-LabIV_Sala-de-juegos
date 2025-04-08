@@ -37,7 +37,7 @@ export class AhorcadoComponent implements OnInit{
   }
 
   public comenzar(){
-    this.palabraSecreta = (this.paises[this.numeroAleatorio()].name.common).toUpperCase();
+    this.palabraSecreta = (this.paises[this.numeroAleatorio()].name).toUpperCase();
     this.palabraSecretaArr = this.stringToArray(this.palabraSecreta);
     this.palabraSecretaArr.forEach(l => {
       this.palabraEnPantalla.push('_');
